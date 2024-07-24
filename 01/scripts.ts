@@ -1,6 +1,6 @@
 import * as fs from "fs";
 
-const escreverArquivo = (json: {} | string) => {
+export const escreverArquivo = (json: {} | string) => {
     if (typeof json === "object") {
         let data: string = JSON.stringify(json);
 
@@ -21,7 +21,7 @@ const escreverArquivo = (json: {} | string) => {
         });
     }
 };
-const lerArquivo = (path: string) => {
+export const lerArquivo = (path: string) => {
     fs.readFile(path, "utf-8", (err, data) => {
         if (err) {
             console.error("Error read file:", err);
@@ -32,4 +32,4 @@ const lerArquivo = (path: string) => {
 };
 
 // escreverArquivo({ nome: "dave" });
-lerArquivo("./bd.json");
+// lerArquivo("./bd.json");
