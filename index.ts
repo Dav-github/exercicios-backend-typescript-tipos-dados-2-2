@@ -61,7 +61,23 @@ function atualizarUsuario(cpf: string, usuario: Usuario) {
     }
 }
 
-function detalharUsuario(cpf: string) {}
+function detalharUsuario(cpf: string) {
+    try {
+        let dados = lerArquivo() as Usuario[];
+
+        for (let i = 0; i < dados.length; i++) {
+            if (dados[i].cpf === cpf) {
+                console.log(dados[i]);
+                return;
+            }
+        }
+        console.log("usuario não encontrado");
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// detalharUsuario("12312312311");
 
 // cadastroUsuario({
 //     nome: "enzo",
