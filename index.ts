@@ -61,6 +61,8 @@ function atualizarUsuario(cpf: string, usuario: Usuario) {
     }
 }
 
+function detalharUsuario(cpf: string) {}
+
 // cadastroUsuario({
 //     nome: "enzo",
 //     email: "enzo@email",
