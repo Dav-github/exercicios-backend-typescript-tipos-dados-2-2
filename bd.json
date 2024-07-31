@@ -1,1 +1,1 @@
-{"nome":"asdf","teste":123}
+[{"nome":"dave","email":"dave@email","cpf":"12312312311","endereco":null},{"nome":"joão","email":"joão@email","cpf":"32132132112","endereco":null},{"nome":"enzo A","email":"enzo@email.com","cpf":"12345678900","endereco":{"cep":"1234","bairro":"Bairro A","cidade":"Cidade Z","rua":"rua"}}]
