@@ -54,8 +54,10 @@ function atualizarUsuario(cpf: string, usuario: Usuario) {
             if (dados[i].cpf === cpf) {
                 dados.splice(i, 1, usuario);
                 escreverArquivo(dados);
+                return;
             }
         }
+        console.log("CPF não encontrado");
     } catch (error) {
         console.log(error);
     }
@@ -77,7 +79,7 @@ function detalharUsuario(cpf: string) {
     }
 }
 
-// detalharUsuario("12312312311");
+// detalharUsuario("123123123112");
 
 // cadastroUsuario({
 //     nome: "enzo",
@@ -86,16 +88,16 @@ function detalharUsuario(cpf: string) {
 //     endereco: null,
 // });
 
-// atualizarUsuario("12345678900", {
-//     nome: "enzo A",
-//     email: "enzo@email.com",
-//     cpf: "12345678900",
-//     endereco: {
-//         cep: "1234",
-//         bairro: "Bairro A",
-//         cidade: "Cidade Z",
-//         rua: "rua",
-//     },
-// });
+atualizarUsuario("123456789002", {
+    nome: "enzo A",
+    email: "enzo@email.com",
+    cpf: "12345678900",
+    endereco: {
+        cep: "1234",
+        bairro: "Bairro A",
+        cidade: "Cidade Z",
+        rua: "rua",
+    },
+});
 
 // console.log(lerArquivo());
