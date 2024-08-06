@@ -28,7 +28,6 @@ function lerArquivo(): any {
 function escreverArquivo(dados: any) {
     try {
         fs.writeFileSync("./bd.json", JSON.stringify(dados));
-        console.log("Arquivo escrito com sucesso!");
     } catch (error) {
         console.log(error);
     }
@@ -79,25 +78,50 @@ function detalharUsuario(cpf: string) {
     }
 }
 
-// detalharUsuario("123123123112");
+function apagarUsuario(cpf: string) {
+    try {
+        let db = lerArquivo() as Usuario[]
+        let indiceParaApagar: number = -1
+        
+        for (let i = 0; i < db.length; i++){
+            if (db[i].cpf == cpf) {
+                indiceParaApagar = i
+            }
+        }
 
-// cadastroUsuario({
-//     nome: "enzo",
-//     email: "enzo@email",
-//     cpf: "12345678900",
-//     endereco: null,
-// });
+        if (indiceParaApagar == -1) {
+            return "usuario não encontrado"
+        }
+        
+        db.splice(indiceParaApagar, 1)
+        escreverArquivo(db)
 
-atualizarUsuario("123456789002", {
-    nome: "enzo A",
-    email: "enzo@email.com",
-    cpf: "12345678900",
-    endereco: {
-        cep: "1234",
-        bairro: "Bairro A",
-        cidade: "Cidade Z",
-        rua: "rua",
-    },
-});
+        return "usuario apagado"
+        
+    } catch (error) {
+        return error
+    }
+}
 
-// console.log(lerArquivo());
+function filtroUsuariosPelasProfissoes(profissao: string) {
+    try {
+        let usuariosEncontrados: Usuario[] = []
+        let dados = lerArquivo() as Usuario[]
+
+        for (let i = 0; i < dados.length; i++){
+            if (dados[i].profissao == profissao) {
+                usuariosEncontrados.push(dados[i])
+            }
+        }
+
+        if (usuariosEncontrados.length == 0) {
+            return `Nossos usuarios não trabalham como ${profissao}`
+        }
+
+        return usuariosEncontrados
+        
+    } catch (error) {
+        return error
+    }
+    
+}
